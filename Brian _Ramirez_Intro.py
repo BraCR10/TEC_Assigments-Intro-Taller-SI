@@ -1,4 +1,4 @@
-
+#Primer ejercicio 
 x=2
 y=4
 z=1
@@ -6,6 +6,7 @@ z=1
 print('El resultado de la primera operacion es:',( x**3 + y**5 + z**2 )**2 * (x*y*z))
 # El resultado es 8536712
 
+#Segundo ejercicio 
 x=4
 y=3
 z=3

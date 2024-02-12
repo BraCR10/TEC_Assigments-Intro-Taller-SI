@@ -1,5 +1,5 @@
 
-#Parte I- Operaciones aritmeticos 
+#Parte I- Operadores aritmeticos 
 x=2
 y=4
 z=8
@@ -16,7 +16,7 @@ print('El resultado de la segunda operacion es:', (((x**3*y**3*z**2)**2)**4)* ((
 
 #Parte II- Condicionales
 
-x=26
+x=0#Puede variar
 if x%3==0:
     print('El resultado del condicional es: ', (x*x)**(x+1)*(x+x) )
 elif x%3==1:
