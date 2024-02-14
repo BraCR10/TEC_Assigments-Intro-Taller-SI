@@ -1,0 +1,37 @@
+#Sin parametros
+def contador():
+    cont=0
+    num=0
+    while(num<=11):
+        if num %2==0:
+            cont+=1
+        num+=1
+    print(f'La cantidad de numero entre 0 y 11 son: {cont} ')
+contador()
+
+#Con parametros
+def contador(x):
+    cont=0
+    while(x<=11):
+        if x %2==0:
+            cont+=1
+        x+=1
+    print(f'La cantidad de numero entre 0 y 11 son: {cont} ')
+num=0
+contador(num)
+
+#Util
+def contador(x):
+    cont=0
+    limit=x
+    while (limit>=0):
+        if limit %2==0:
+            cont+=1
+        limit-=1
+    return(cont)
+limit=int(input('Digite un numero para contar los pares de 0 a el numero: '))
+if limit==0:
+    print('Cero es numero par')
+else:
+    result=contador(limit)
+    print(f'La cantidad de numero pares entre 0 y {limit} son: {result}')
