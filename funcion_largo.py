@@ -1,12 +1,12 @@
-def lenNum(num):
-    if num==0:
-        print(1)
+def lenNum(num):#Funcion del largo
+    if num==0:#Validacion
+        return 1
     else:
         cont=0
         while num!=0:
-            temp=num%10
-            num=num//10
-            cont+=1
-    print(f'La cantidad de digitos son: {cont}')
+            temp=num%10#Recolecta el ultimo numero 
+            num=num//10#Elimina el ultimo numero
+            cont+=1#Contador
+    return cont
 
-lenNum(12)
+print(lenNum(12))
