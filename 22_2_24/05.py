@@ -13,7 +13,7 @@ def sumador1(lista):
             return sum
     else:
         return '\nEl parametro debe ser una lista, no se puede hacer la suma'
-print('La suma de los elementos de la lista es: ',sumador1(lista))
+print('La suma de los elementos pares de la lista es: ',sumador1(lista))
 
 #Escribir una funcion que recibe una lista y los suma los pares sin destruir
 def sumador2(lista):
@@ -30,4 +30,4 @@ def sumador2(lista):
             return sum
     else:
         return '\nEl parametro debe ser una lista, no se puede hacer la suma'
-print('La suma de los elementos de la lista es: ',sumador2(lista))
+print('La suma de los elementos pares de la lista es: ',sumador2(lista))
