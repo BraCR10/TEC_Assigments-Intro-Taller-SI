@@ -16,7 +16,7 @@ def lenNum(num):#Funcion del largo
 num=3056#Este metodo no toma los 0s, ¡Cuidado!
 print('Numero original:', num,' \n')
 while num!=0:
-    temp1=num//(10**(lenNum(num)-1))#Extrae el numero
+    temp1=num//(10**(lenNum(num)-1))#Extrae el primer numero
     print('Primer numero de izq a der: ',temp1)
     num%=(10**(lenNum(num)-1))#Crea el nuevo numero
     print('El numero que va quedando',num,' \n')
