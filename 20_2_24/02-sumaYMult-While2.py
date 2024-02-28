@@ -49,4 +49,4 @@ def primeraFuncion(num1,num2):
             print('El resultado de la suma es: ',suma)
             print('El resultado de la multiplicacion  es: ',mult)
 
-primeraFuncion("6183",1429)
+primeraFuncion(6183,1429)
