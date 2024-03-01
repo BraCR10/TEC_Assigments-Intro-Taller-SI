@@ -1,0 +1,13 @@
+999;Costa Rica
+888;Honduras
+777;Nicaragua
+111;Francia
+222;Italia
+333;Mexico
+444;Ecuador
+555;USA
+666;Canada
+741;Panama
+123;Alemania
+258;Jamaica
+654;El Salvador

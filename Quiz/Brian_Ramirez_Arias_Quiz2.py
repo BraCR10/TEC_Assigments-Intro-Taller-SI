@@ -75,5 +75,5 @@ def operacionesPares(num1,num2):
 operacionesPares(1234,2356)
 operacionesPares(0,9)
 operacionesPares(-9,-7)
-operacionesPares(-22,20)
+operacionesPares(20,20)
 operacionesPares(0,0)
