@@ -22,7 +22,7 @@ def inspector(num):
     else:#Validacion
         print ('\nEl parametro debe se un numero entero, impar y positivo')
 #Prueba       
-inspector(187)
+inspector(1875556)
 
 #Recibe un entero positivo de tamaño impar, lo pasa a lista y encuentra el numero del centro
 def inspector2(numero):
@@ -49,6 +49,7 @@ def transformador(lista):
             print( 'La lista esta vacia')#Validacion
         else:
             check=0#Valida si todos los elemnetos son enteros
+            contador=0#Para contar impares
             i=len(lista)-1#Se le resta 1 para que no haya error al iterar en la lista
             nuevaLista=[]
             while i>=0:
@@ -58,9 +59,11 @@ def transformador(lista):
                     break
                 if lista[i]%2==0:#Solo enteros
                     nuevaLista=nuevaLista+[lista[i]]
+                else:
+                    contador+=1
                 i-=1
             if check==0:
-                print('\nLa nueva lista es: ', nuevaLista)
+                print('\nLa nueva lista es: ', nuevaLista,' y la cantidad de impares es: ',contador)
     else:#Validacion
         print( '\nEl parametro debe ser una lista, no se puede hacer la operacion')
 
