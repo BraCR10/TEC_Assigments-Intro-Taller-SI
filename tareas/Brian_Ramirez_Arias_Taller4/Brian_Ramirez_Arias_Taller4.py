@@ -1,7 +1,7 @@
 #Esta funcion lee un fichero llamado prueba.txt, los datos deben ser numeros separados por ;
 #Ejemplo: 3;5 -----> El programa imprime 3 y 5 por separado
 def leerPrueba(): 
-    numeros = open('Prueba.txt', 'r')
+    numeros = open('tareas\Brian_Ramirez_Arias_Taller4\Prueba.txt', 'r')
     num=numeros.readlines()#Se crea una lista, cada linea en el fichero es un elemento
     numeros.close()
     lista=[]#Lista para almacenar cambios en los datos del fichero
