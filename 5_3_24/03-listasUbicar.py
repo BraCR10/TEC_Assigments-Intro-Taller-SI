@@ -21,7 +21,7 @@ def transformador(num,dig):
         print( '\nEl parametro debe ser un entero y el digito no puede ser mayor a 9 o menor que -9')
 transformador(-133,9)
 
-#Ubica un elemento en la lista
+#Ubica un elemento en la lista recibiendo un numero
 def ubicador(num,dig):
     if isinstance(num,int) and dig<=9 and dig>=0:#Validacion
         if num==0:#Validacion

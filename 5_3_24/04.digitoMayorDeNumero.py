@@ -15,7 +15,7 @@ def inspector(num):
 #Prueba       
 inspector(51)
 
-#recibe un numero entero, y obtiene el mayor en una lista
+#recibe un numero entero, y obtiene el mayor en una lista 
 def inspector(num):
     if type(num)==int and num>=0:#Validacion
         numCopia=num
