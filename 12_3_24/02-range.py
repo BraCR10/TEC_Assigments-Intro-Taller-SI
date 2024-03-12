@@ -1,0 +1,6 @@
+#range (<opcional inicio>, final , <opcional final>)
+print(list(range(5)))
+print(list(range(1,5)))
+print(list(range(0,20,5)))
+print(list(range(0,-5,-1)))
+print(list(range(5,2)))
