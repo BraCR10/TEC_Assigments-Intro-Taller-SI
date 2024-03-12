@@ -14,7 +14,6 @@ def factorial(num):#Funcion que permite calcular el factorial
         return 1
     else:#Se ejecuta solo en caso de que el parametro no sea entero
         return 0
-
 def largoNum(num):#Funcion que permite obtener el largo
     if isinstance(num,int):#Validacion
         if num==0:#Validacion
@@ -55,10 +54,10 @@ def DOS(num):#Recibe un número de cualquier tamaño entero positivo, cada vez q
                 nuevoNum=nuevoNum+ ultimoDigito*ceros#Agrega los numeros diferentes de 0 a nuevoNum
                 ceros=ceros*10#Agrega 1 cero mas para sumar los demas digitos
             num=num//10#Quita el ultimo digito de num
-            
         print(nuevoNum)#Resultado
-                
-        
+    else:
+        print('El numero debe ser entero')
+    
 def TRES(num1,num2):#Crea 2 listas combinando 2 numero enteros
     if largoNum(num1)==largoNum(num2) and isinstance(num1,int) and isinstance(num2,int):#Validacion
         num1Copia=abs(num1)#Copias para destuir y hacer lista 1
@@ -116,7 +115,7 @@ def TRES(num1,num2):#Crea 2 listas combinando 2 numero enteros
         print(num1,num2)#Resultado
     else:
         print('Los numeros deben ser del mismo largo y enteros')
-        
+
 def CUATRO(num1,num2,num3):
     if largoNum(num1)>=3 and largoNum(num2)>=3 and largoNum(num3)>=3 and largoNum(num1)%2!=0  and largoNum(num2)%2!=0 and largoNum(num3)%2!=0 and largoNum(num1)==largoNum(num2)==largoNum(num3) and isinstance(num1,int) and isinstance(num3,int) and isinstance(num2,int):#Validacion
         num3Copia=abs(num3)
