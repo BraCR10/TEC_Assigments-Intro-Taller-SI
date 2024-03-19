@@ -23,4 +23,4 @@ def izqAder(num):#Menejar numero de izq a der
         print (temp1 )
 
 
-izqAder(1203)
+izqAder(123)
