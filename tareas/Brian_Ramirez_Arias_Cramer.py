@@ -8,6 +8,7 @@ def cramer():
     cont=1
     limite=0
     for i in listaEcuacion:#Itera en lista sin cambios
+
         i=int(i)
         listaTemp+=[i]
         if cont==3:
