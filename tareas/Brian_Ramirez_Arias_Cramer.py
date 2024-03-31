@@ -3,13 +3,27 @@ def cramer():
     ecuacion = open('tareas\ecuaciones.txt', 'r',encoding="utf8")
     listaEcuacion=ecuacion.readlines()
     ecuacion.close
+    validacionNums=['0','1','2','3','4','5','6','7','8','9','-']#Para pasar los textos a numeros enteros
+    datos=[]
+    numValido=''
+    #Este ciclo descarta cualquier caracter no numerico
+    for i in listaEcuacion:
+        for j in range(0,len(i)):
+            if i[j] in validacionNums:
+                numValido+=i[j]
+            else:
+                break
+        datos+=[numValido]
+        numValido=''
     listaTemp=[]
-    principal=[]
+    principal=[]#Contiene los numero en formato entero
     cont=1
     limite=0
-    for i in listaEcuacion:#Itera en lista sin cambios
-
-        i=int(i)
+    for i in datos:#Itera en lista sin cambios
+        if i =='':
+            i=0
+        else:
+            i=int(i)
         listaTemp+=[i]
         if cont==3:
             principal+=[listaTemp]
@@ -30,10 +44,17 @@ def cramer():
     print('El determinante X es:',deterX)
     print('El determinante Y es:',deterY)
     #Ecuaciones
-    print('La ecuacion de la recta A es: ',principal[0][0],'x +',principal[0][1],'y =',principal[0][2])
-    print('La ecuacion de la recta B es: ',principal[1][0],'x +',principal[1][1],'y =',principal[1][2])
+    if principal[0][0]==0 and principal[0][1]==0 and principal[0][2]==0:
+        print('No hay datos suficientes para la recta A ')
+    else:
+        print('La ecuacion de la recta A es: ',principal[0][0],'x +',principal[0][1],'y =',principal[0][2])
+    if principal[1][0]==0 and principal[1][1]==0 and principal[1][2]==0:
+        print('No hay datos suficientes para la recta B ')
+    else:
+        print('La ecuacion de la recta B es: ',principal[1][0],'x +',principal[1][1],'y =',principal[1][2])
     #Creacion de la figura
     fig, ax= plt.subplots()
+    centro=False#Para verificar que las interseccion sea en el centro
     #Punto de ineterseccion
     if deterG!=0:
         x=deterX/deterG
@@ -56,11 +77,13 @@ def cramer():
         X1=0
     else:
         X1=principal[0][2]/principal[0][0]#Eje X
+        
     if principal[0][1]==0:
         vertical1=1
         Y1=0
     else:
         Y1=principal[0][2]/principal[0][1]#Eje y
+    
     #Interseccion con ejes de recta dos
     if principal[1][0]==0:
         horizontal2=1
@@ -81,15 +104,38 @@ def cramer():
     elif horizontal1==1:
         ax.axhline(y=Y1, linewidth=1, color='b',marker="^")
     else:
-        ax.axline((X1, 0), (0, Y1), linewidth=1, color='b',marker="^")#Pasa por los dos punto de interseccion
+        if X1==0 and Y1==0:
+            if y==0 and x==0:#En caso de que la recta solo pase por el punt(0,0)
+                centro=True
+                tempX=[]
+                tempY=[]
+                for i in range(-100,100):
+                    tempX+=[i]
+                    tempY+=[-(principal[0][0]*i)/principal[0][1]]       
+                ax.plot(tempX,tempY, linewidth=1, color='b')
+            else:
+                ax.axline((X1, 0), (x, y), linewidth=1, color='b',marker="^")#Pasa por los dos punto de interseccion
+        else:
+            ax.axline((X1, 0), (0, Y1), linewidth=1, color='b',marker="^")#Pasa por los dos punto de interseccion
     #Recta 2
     if vertical2==1:
         ax.axvline(x=X2, linewidth=1, color='#65FB30',marker="^")
     elif horizontal2==1:
         ax.axhline(y=Y2, linewidth=1, color='#65FB30',marker="^")
     else:
-        ax.axline((X2, 0), (0, Y2), linewidth=1, color='#65FB30',marker="^")
-    #Interseccion con ejes de recta uno
+        if X2==0 and Y2==0:
+            if y==0 and x==0:#En caso de que la recta solo pase por el punt(0,0)
+                tempX=[]
+                tempY=[]
+                for i in range(-100,100):
+                    tempX+=[i]
+                    tempY+=[-(principal[1][0]*i)/principal[1][1]]
+                ax.plot(tempX,tempY, linewidth=1, color='#65FB30')
+            else:
+                ax.axline((X2, 0), (x, y), linewidth=1, color='#65FB30',marker="^")
+        else:
+            ax.axline((X2, 0), (0, Y2), linewidth=1, color='#65FB30',marker="^")
+ #Interseccion con ejes de recta uno
     if horizontal1!=1:
         ax.scatter(X1,0,color='green',)#Eje X
     if vertical1!=1:
@@ -98,9 +144,9 @@ def cramer():
     if horizontal2!=1:
         ax.scatter(X2,0,color='green')#Eje X
     if vertical2!=1:
-        ax.scatter(0,Y2,color='green')#Eje y
+        ax.scatter(0,Y2,color='green')#Eje y'''
     #Cuadro de signos
-    if x==0 and y==0:
+    if x==0 and y==0 and centro==False:
         plt.legend(["Eje X", "Eje Y","Recta A","Recta B","Intersecciones con ejes ordenados"])
     else:
         plt.legend([f"Punto de interseccion:  ({x} , {y})","Eje X", "Eje Y","Recta A","Recta B","Intersecciones con ejes ordenados"])
