@@ -71,7 +71,7 @@ def Filtrador(lista):
     else:
         print('Debe ingresar una lista ')
 #Prueba
-#Filtrador([6000,12,1500,3,40,10,11,1,2,16,200,5])          
+Filtrador([6000,12,1500,3,40,10,11,1,2,16,200,5])          
    
 #Validar conjuntos
 def conjunto(lista):
@@ -104,7 +104,7 @@ def unionConjunto(lista1,lista2):
     else:
         print('Deben ingresar listas!')
 #Pruebas
-unionConjunto([1,5,75,68,9,6,'**'],[1,2,3,6,7,'*2*','**'])
+#unionConjunto([1,5,75,68,9,6,'**'],[1,2,3,6,7,'*2*','**'])
             
         
         
