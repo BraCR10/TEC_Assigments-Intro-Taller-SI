@@ -36,6 +36,6 @@ def concatenador(n1,n2):#Suma ambas sumatorias y las eleva a la 2
         print("Para esta sumatoria el numero debe ser mayor o igual a 0")
     else:
       print('El resultado es: ',(n1+n2)**2)
-print(sumatoria1(1))
+print(sumatoria1(8))
 print(sumatoria2(1))
 concatenador(sumatoria1(1),sumatoria2(1))

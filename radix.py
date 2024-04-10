@@ -68,4 +68,3 @@ def radix(lista):
          print(lista)
          cont += 1
      return lista
-radix([5,9,7,5,4,3,1,777,8])
