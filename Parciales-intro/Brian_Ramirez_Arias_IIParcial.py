@@ -259,21 +259,20 @@ def DOS(lista):
 #DOS([3,4,3])
 #DOS([])
 ##########################################################################################################################
-def buscador(lista,elem,operacion):#Busca todos numero iguales al elemento
-    listaNiveles = [lista]  # La lista principal
-    for i in listaNiveles:
-        for j in range(len(i)):#Descompone niveles
-            temp = i[j]#Vale cada num en la lista
-            if isinstance(temp, list):
-                listaNiveles+=[temp]  # Se agrega al final de la lista de niveles para volver a pasar
-            elif temp == elem:#Si es entero
-                i[j] = operacion  # agrega la operacion 
 def TRES(elem,lista):
     if isinstance(elem,int) and type(lista)==list:
-        print(lista)#Imprime la lista original
+        nuevaLista=lista[:]
         operacion=[1,0,elem,elem,-(elem),0,1]
-        buscador(lista,elem,operacion)#Cambia lista
-        print(lista)#Imprime la nueva lista
+        listaNiveles = [nuevaLista]  # La lista principal
+        print(lista)
+        for i in listaNiveles:
+            for j in range(len(i)):#Descompone niveles
+                temp = i[j]#Vale cada num en la lista
+                if isinstance(temp, list):
+                    listaNiveles+=[temp]  # Se agrega al final de la lista de niveles para volver a pasar
+                elif temp == elem:#Si es entero
+                    i[j] = operacion  # agrega la operacion 
+        print(nuevaLista)#Imprime la nueva lista
     else:
         print('Parametros incorrectos')
 #Pruebas
