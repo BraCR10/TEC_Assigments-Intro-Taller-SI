@@ -202,6 +202,7 @@ def UNO(n1,n2):
 #UNO(123456789123456789123456789123456789123456789,123456789123456789123456789123456789123456789) 
 #UNO(123456789112340,123456789112340)
 #UNO(1111111111111111111111191111111111111111111111111111111,1111111111111111111111111111119111111111111111111111111)
+#UNO(34211,23452)
 
 ################################################################################################  
 #Validar conjuntos
@@ -282,6 +283,7 @@ def TRES(elem,lista):
 #TRES(-10,[1,[2,9],[[4,2,6],[8]],2,-10])
 #TRES(-10,[1,[2,9],[[[[-10]]],[4,2,6],[8]],2,-10)]
 #TRES(-10,[-10,888])
+#TRES(1, [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[5,[[[[[[[[[[[[[[[[[[[[[[1]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]])
 ##########################################################################################################################
 def CUATRO(num,numIncluir,cant,numBuscar):
     if isinstance(num,int) and isinstance(numIncluir,int) and isinstance(cant,int) and isinstance(numBuscar,int) and largoNum(numIncluir)==1:#Validacion
@@ -324,8 +326,8 @@ def CUATRO(num,numIncluir,cant,numBuscar):
                 else:
                     nuevaLista=[temp]+nuevaLista#Agrega a la lista
                 numCopia//=10#Exstrae un digito de der a izq
-        print(num)
-        print(nuevaLista)
+        
+        print(num , nuevaLista)
     else:#Validacion
         print('Parametros incorrectoa')
 #Pruebas
@@ -336,3 +338,7 @@ def CUATRO(num,numIncluir,cant,numBuscar):
 #CUATRO(0,-8,5,0)
 #CUATRO(-0,-8,5,0)
 #CUATRO(81180,-3,-10,-8)
+#CUATRO(1, -2, 1,1)
+#CUATRO(1, -2, 0,1)
+#CUATRO(0,-2,0,0)
+#CUATRO(0,-2,1,0)
