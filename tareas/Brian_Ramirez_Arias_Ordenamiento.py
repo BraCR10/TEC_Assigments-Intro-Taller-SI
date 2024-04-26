@@ -5,7 +5,7 @@ def ordenamientoBurbuja(lista):
                     k = lista[j+1]
                     lista[j+1] = lista[j]
                     lista[j] = k
-     print(lista)
+               print(lista)
 ########################################################################################################
 def  selectionsort(lista):
      for  i in range(0,len(lista)-1):

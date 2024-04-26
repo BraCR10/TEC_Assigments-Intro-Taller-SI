@@ -1,13 +1,14 @@
 #ordemnamiento burbuja
 def ordenamientoBurbuja(lista):
      for i in range(1,len(lista)):
+          print(len(lista))
           for j in range(0,len(lista)-i):
                if(lista[j] > lista[j+1]):
                     k = lista[j+1]
                     lista[j+1] = lista[j]
                     lista[j] = k
-          print(lista)
-
+                    #print(lista,len(lista)-i)
+ordenamientoBurbuja([100,22,95,1,23,45,450,18,35])
 #ordenamiento seleccion
 def  selectionsort(lista):
      for  i in range(0,len(lista)-1):
