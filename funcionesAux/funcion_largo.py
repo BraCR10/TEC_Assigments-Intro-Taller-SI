@@ -1,4 +1,4 @@
-def largpNum(num):#Funcion del largo
+def largoNum(num):#Funcion del largo
     if isinstance(num,int):
         if num==0:#Validacion
             return 1
@@ -13,4 +13,4 @@ def largpNum(num):#Funcion del largo
         return 'Deben ser enteros'
 
 
-print(largpNum(-12))
+print(largoNum(-12))
