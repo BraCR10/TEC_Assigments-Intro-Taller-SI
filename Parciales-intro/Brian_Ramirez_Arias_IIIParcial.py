@@ -9,10 +9,13 @@
 def UNO(num,numIncluir,cant,numBuscar):#Funcion de cola con varias funciones axiliares
     if type(num)==int and type(numIncluir)==int and type(cant)==int and type(numBuscar)==int:#Validaciones
         if cant==0:# Si  cantidad es 0
+            #Salida
             return noHay_aux(num,[],False)#Funcion exclusiva de que no existe el numero buscado o cant=0
         elif verificadorNumBuscado_aux(abs(num),abs(num),abs(numBuscar))==False:#Si no esta el dig buscado
+            #Salida
             return noHay_aux(num,[],False)#Funcion exclusiva de que no existe el numero buscado o cant=0
         else:
+            #Salida
             return UNONormal_aux(abs(num),False,numIncluir,abs(cant),abs(numBuscar),[])#Funcion para cualquier otro caso
     else:
         print('Parametro incorrecto')
@@ -96,6 +99,8 @@ def noHay_aux(num,lista,bandera):#Se utiliza en caso de que cant sea 0 o que no 
 #print(UNO(333,4,2,4))
 #print(UNO(1020,-5,2,0))
 #print(UNO(123,1,0,1))
+#print(UNO(0,1,9,0))
+#print(UNO(0,-1,9,0))
 
 ##########################################################################################################################################
 # largoLista Almacena el largo de la lista
@@ -140,7 +145,8 @@ def DOS(lista):
                                 nuevaLista+=[[-2,0,-2,(lista[i]+lista[i+2]-lista[1])**3,2,0,2]]
                             else:#En cualquier otro caso
                                 nuevaLista+=[[-2,0,-2,(lista[i]+lista[i+2]-lista[i+4])**3,2,0,2]]
-            print(nuevaLista)#Imprime la nueva lista
+                                
+            print(nuevaLista)#Salida
         else:
             print('La lista debe ser de tamaño impar y mayor a 3')
     else:
@@ -177,8 +183,9 @@ def TRES(lista,elemento):
                     pocision[j] = [1,0,elemento,elemento,0,1] # agrega el patron
                 j+=1
             i+=1
-        lista=lista #Se elimina los niveles inferiores ya actualizados que se añadieron a la lista para buscar valores
-        print(lista)#Imprime la  lista
+        lista=lista[0] #Se elimina los niveles inferiores ya actualizados que se añadieron a la lista para buscar valores
+        
+        print(lista)#Salida
 #Pruebas
 #TRES([[[[[[[[[[[[[2]]]],3]]]]]]]]],2) 
 #TRES([2,[2,3,[-2],5,9],7],-2)
@@ -287,7 +294,8 @@ def CUATRO(num1,num2,num3):
                     contNum1Num3+=1
                     confirmador=False#Otra vez falso para que no incremente hasta que se confirme nuevamente
                 lista+=[[centro,temp1,temp2]]#Agrega a la lista el centro y los temporales correspondientes 
-            print(lista,num1,num2,num3)
+                
+            print(lista,num1,num2,num3)#Salida
         else:
           print('Parametros incorrectos')  
     else:
@@ -300,4 +308,8 @@ def CUATRO(num1,num2,num3):
 #CUATRO(312,890,465)
 #CUATRO(354,100,500)
 #CUATRO(340123795,100237206,311053450)
+#CUATRO(257,132,583)
+#CUATRO(000,000,000)
+#CUATRO(10130,20507,43805)
+#CUATRO(-7030215,-5019702,-3031550)
 #print(176%1000//(10**(3-1)))
