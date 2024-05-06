@@ -1,6 +1,6 @@
 #III Parcial
 # Brian Ramirez Arias
-#Carnet 2024109557   
+#Carnet 2024109557
 
 #Num es el numero para trabajar
 #NumIncluir es el numero a incluir en el patron
@@ -30,9 +30,9 @@ def UNONormal_aux(num,bandera,numIncluir,cant,numBuscar,lista):#Verifica numero 
     if num==0 and bandera==True:#Finalizacion
         return []
     elif num%10==numBuscar:#Si el dig coincide con el numBuscado
-       return UNONormal_aux(num//10,True,numIncluir,cant,numBuscar,lista)+patron_aux(cant*2,cant*4,numIncluir,numBuscar,[],0,False,False)+lista#Se llama a el generador de patron,la lista retornada se agrega a la lista y se vuelve a llamar a la funcion sin el dig ya verificado
+      return UNONormal_aux(num//10,True,numIncluir,cant,numBuscar,lista)+patron_aux(cant*2,cant*4,numIncluir,numBuscar,[],0,False,False)+lista#Se llama a el generador de patron,la lista retornada se agrega a la lista y se vuelve a llamar a la funcion sin el dig ya verificado
     elif num%10!=numBuscar:#Si el dig no coincide
-       return UNONormal_aux(num//10,True,numIncluir,cant,numBuscar,lista)+[num%10]+lista
+      return UNONormal_aux(num//10,True,numIncluir,cant,numBuscar,lista)+[num%10]+lista
 
 #num es el numero para trabajar, se corta conforme pasa la funcion
 #verificador se utiliza para saber si el num no es 0 desde un principio
@@ -44,7 +44,7 @@ def verificadorNumBuscado_aux(num,verificador,numBuscado):#Verifica si esta el n
         return True
     else:
         return verificadorNumBuscado_aux(num//10,verificador,numBuscado)
-   
+
 #CantOriginal contine la cantidad dada el usuario multplicada por 2 ya que se duplica entre el num a agregar y el opuesto
 #cant contine la cantidad dada el usuario multplicada por 4, debido a que se ocupa la misma cantidad antes y despues del dig que coincide
 #NumIncluir es el numero a incluir en el patron
@@ -81,12 +81,12 @@ def noHay_aux(num,lista,bandera):#Se utiliza en caso de que cant sea 0 o que no 
     if num==0 and bandera==True:#Si ya se ejecuto mas de una vez y num=0
         return []
     else:#Si num!=0
-        return noHay_aux(num//10,lista,True)+ [0]+[num%10]+[-1]+lista 
-#Pruebas  
+        return noHay_aux(num//10,lista,True)+ [0]+[num%10]+[-1]+lista
+#Pruebas
 #print(UNO(8779,-2,-1,7))
 #print(UNO(0,-2,-1,0))
 #print(UNO(789,-2,-1,8))
-#print(UNO_aux(789,1,1,8,[]))       
+#print(UNO_aux(789,1,1,8,[]))
 #print(patron_aux(5*2,5*4,8,3,[],0,False,False))
 #print(UNO(73439,8,5,3))
 #print(UNO(0,0,0,0))
@@ -101,6 +101,7 @@ def noHay_aux(num,lista,bandera):#Se utiliza en caso de que cant sea 0 o que no 
 #print(UNO(123,1,0,1))
 #print(UNO(0,1,9,0))
 #print(UNO(0,-1,9,0))
+#print(UNO(90548950,-8,2,0))
 
 ##########################################################################################################################################
 # largoLista Almacena el largo de la lista
@@ -124,7 +125,7 @@ def DOS(lista):
                     if i%2==0:#si es pocision par
                         if  i+2==largoLista:#En caso de que se necesite sumar el elemento [0] de la lista y evitar el error index out range
                             nuevaLista+=[[1,0,1,(lista[i]+lista[0]-lista[2])**2,-1,0,-1]]
-                        elif   i+1==largoLista:#En caso de que se necesite sumar el elemento [1] de la lista y evitar el error index out range
+                        elif  i+1==largoLista:#En caso de que se necesite sumar el elemento [1] de la lista y evitar el error index out range
                             nuevaLista+=[[1,0,1,(lista[i]+lista[1]-lista[3])**2,-1,0,-1]]
                         else:#En cualquier otro caso sin problema de index
                             if i+4==largoLista:#Si el elemento que se resta esta en la posicion 0
@@ -145,7 +146,7 @@ def DOS(lista):
                                 nuevaLista+=[[-2,0,-2,(lista[i]+lista[i+2]-lista[1])**3,2,0,2]]
                             else:#En cualquier otro caso
                                 nuevaLista+=[[-2,0,-2,(lista[i]+lista[i+2]-lista[i+4])**3,2,0,2]]
-                                
+
             print(nuevaLista)#Salida
         else:
             print('La lista debe ser de tamaño impar y mayor a 3')
@@ -171,7 +172,7 @@ def DOS(lista):
 def TRES(lista,elemento):
     if type(lista)==list and type(elemento)==int:#Validacion
         i=0#Contador del while
-        lista=[lista]#Se trabaja sobre la misma lista 
+        lista=[lista]#Se trabaja sobre la misma lista
         while i<len(lista):
             pocision=lista[i]
             j=0
@@ -184,15 +185,15 @@ def TRES(lista,elemento):
                 j+=1
             i+=1
         lista=lista[0] #Se elimina los niveles inferiores ya actualizados que se añadieron a la lista para buscar valores
-        
+
         print(lista)#Salida
 #Pruebas
-#TRES([[[[[[[[[[[[[2]]]],3]]]]]]]]],2) 
+#TRES([[[[[[[[[[[[[2]]]],3]]]]]]]]],2)
 #TRES([2,[2,3,[-2],5,9],7],-2)
-#TRES( [1,[2,9,],[[4,2,6],[8]],2,10],2) 
-#TRES([1,2,3],3) 
-#TRES([],2) 
-#TRES([1,2,3],-3) 
+#TRES( [1,[2,9,],[[4,2,6],[8]],2,10],2)
+#TRES([1,2,3],3)
+#TRES([],2)
+#TRES([1,2,3],-3)
 #############################################################################################################################################
 #Num es el numero al que se le va a evaluar el largo
 #Cont incremeta conforme se corta el num
@@ -207,7 +208,7 @@ def largoNum(num):#Funcion del largo
                 if n ==0:#Corta el bucle cuando n vale 0
                     return cont
                 cont+=1
-                n//=10          
+                n//=10
     else:
         return 0#Retorna 0 para evitar errores, el usuario no interactua con esta funcion directamente
 
@@ -238,9 +239,9 @@ def CUATRO(num1,num2,num3):
             num1=abs(num1)
             num2=abs(num2)
             num3=abs(num3)
-            centroNum1=buscarCentro(num1) 
-            centroNum2=buscarCentro(num2) 
-            centroNum3=buscarCentro(num3) 
+            centroNum1=buscarCentro(num1)
+            centroNum2=buscarCentro(num2)
+            centroNum3=buscarCentro(num3)
             lista=[]#Donde se insertan los numeros
             bandera=0#Tiene 4 modos
             #0 cuando interactua con el centro de num 1 y los extremos de num3
@@ -293,14 +294,14 @@ def CUATRO(num1,num2,num3):
                     ceros+=1
                     contNum1Num3+=1
                     confirmador=False#Otra vez falso para que no incremente hasta que se confirme nuevamente
-                lista+=[[centro,temp1,temp2]]#Agrega a la lista el centro y los temporales correspondientes 
-                
+                lista+=[[centro,temp1,temp2]]#Agrega a la lista el centro y los temporales correspondientes
+
             print(lista,num1,num2,num3)#Salida
         else:
-          print('Parametros incorrectos')  
+          print('Parametros incorrectos')
     else:
         print('Parametros incorrectos')
-        
+
 #CUATRO(122,-421,155)
 #CUATRO(312359061,890121635,435762340)
 #CUATRO(3123590,8901216,4357623)
@@ -313,3 +314,6 @@ def CUATRO(num1,num2,num3):
 #CUATRO(10130,20507,43805)
 #CUATRO(-7030215,-5019702,-3031550)
 #print(176%1000//(10**(3-1)))
+#CUATRO(123,456,789)
+#CUATRO(12307,45076,78679)
+#CUATRO(122310003,450007826,782000782)
