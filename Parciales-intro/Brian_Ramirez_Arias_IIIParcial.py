@@ -185,8 +185,9 @@ def TRES(lista,elemento):
                 j+=1
             i+=1
         lista=lista[0] #Se elimina los niveles inferiores ya actualizados que se añadieron a la lista para buscar valores
-
         print(lista)#Salida
+    else:
+        print('Parametro incorrecto')
 #Pruebas
 #TRES([[[[[[[[[[[[[2]]]],3]]]]]]]]],2)
 #TRES([2,[2,3,[-2],5,9],7],-2)
