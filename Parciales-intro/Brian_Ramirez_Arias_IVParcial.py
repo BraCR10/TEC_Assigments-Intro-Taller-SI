@@ -33,7 +33,9 @@ def UNO(num,numIncluir,cant,numBuscar):
         if abs(cant)==0:
             return cant0_aux(num,[],False)
         else:
-            if abs(num)%10==abs(numBuscar):
+            if abs(num)==0 and abs(numBuscar)==0:
+                return [patron_aux(abs(cant)*2,abs(cant)*4,numIncluir,abs(numBuscar),[],0,False,False)]
+            elif abs(num)%10==abs(numBuscar):
                 return UNO_aux(abs(num)//10,numIncluir,abs(cant),abs(numBuscar))+[patron_aux(abs(cant)*2,abs(cant)*4,numIncluir,abs(numBuscar),[],0,False,False)]
             else:
                 return UNO_aux(abs(num)//10,numIncluir,abs(cant),abs(numBuscar))+[[0,abs(num%10),-1]]
@@ -139,8 +141,6 @@ def DOS1(n):#Decremento
     if isinstance(n,int):
         if n<=0:
             return'El numero debe ser mayor o igual a 1'
-        elif n==1:
-            return 0
         else:
             return (DOS1_aux(n,0,n))**(n+1)
     else:
