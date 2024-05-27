@@ -1,18 +1,18 @@
 def lecturaArchivo():
     archivo = open('IIParcialTaller/Arch1.txt', 'r', encoding="utf8")
-    listaArch1=eliminador(archivo)
+    listaArch1=filtradorItems(archivo)
     archivo.close()  
     archivo = open('IIParcialTaller/Arch2.txt', 'r', encoding="utf8")
-    listaArch2=eliminador(archivo)
+    listaArch2=filtradorItems(archivo)
     archivo.close()  
     archivo = open('IIParcialTaller/Arch3.txt', 'r', encoding="utf8")
-    listaArch3=eliminador(archivo)
+    listaArch3=filtradorItems(archivo)
     archivo.close()  
     archivo = open('IIParcialTaller/Arch4.txt', 'r', encoding="utf8")
-    listaArch4=eliminador(archivo)
+    listaArch4=filtradorItems(archivo)
     archivo.close()  
     archivo = open('IIParcialTaller/Arch5.txt', 'r', encoding="utf8")
-    listaArch5=eliminador(archivo)
+    listaArch5=filtradorItems(archivo)
     archivo.close()  
     #Agregando identificador
     listaArch1=[1]+listaArch1
@@ -24,7 +24,7 @@ def lecturaArchivo():
     return[listaArch1,listaArch2,listaArch3,listaArch4,listaArch5]
     
     
-def eliminador(archivo):
+def filtradorItems(archivo):
     lista = []
     cadenaTemp = ''
     while True:#Termina hasta que se recorra todo el archivo
@@ -43,10 +43,10 @@ def eliminador(archivo):
     return lista
     
    
-def listaPostFijo(lista):
-    lista=lista[1:]
-    listaPila=[]
-    listaExpresion=[]
+def listasPosFijo(lista):#Convierte una operacion a una lista posfijo
+    lista=lista[1:]#Se quita la identificacion de archivo
+    listaPila=[]#Donde se ponen los operandos
+    listaExpresion=[]#Se arma la lista a retornar
     for elemento in lista:
         if elemento.isdigit():
             listaExpresion+=[int(elemento)]
@@ -56,48 +56,47 @@ def listaPostFijo(lista):
             elif elemento=='(' :
                 listaPila+=[elemento]
             elif elemento=='^' :
-                if listaPila[len(listaPila)-2:] =='^':
-                    listaExpresion+=[listaPila[len(listaPila)-2:]]
-                    listaPila=listaPila[:len(listaPila)-2]
-                    listaPila+=[elemento]
-                else:
-                    listaPila+=[elemento]
-
-            elif elemento=='*' or elemento=='/':
-                if listaPila[len(listaPila)-1:] in [['^'],['/'],['*']]:
+                if listaPila[len(listaPila)-1:] ==['^']:#Solo pasa si el elemento mas reciente es en pila es ^
                     listaExpresion+=listaPila[len(listaPila)-1:]
                     listaPila=listaPila[:len(listaPila)-1]
                     listaPila+=[elemento]
-                else:
+                else:#Si no es ^
+                    listaPila+=[elemento]
+            elif elemento=='*' or elemento=='/':
+                if listaPila[len(listaPila)-1:] in [['^'],['/'],['*']]:#Solo pasa si el elemnto mas reciente en cola es ^ o / o *
+                    listaExpresion+=listaPila[len(listaPila)-1:]
+                    listaPila=listaPila[:len(listaPila)-1]
+                    listaPila+=[elemento]
+                else:#Si  no es ^ o / o *
                     listaPila+=[elemento]
             elif elemento=='+' or elemento=='-':
-                if listaPila[len(listaPila)-1:] in [['^'],['*'],['/'],['-'],['+']]:
+                if listaPila[len(listaPila)-1:] in [['^'],['*'],['/'],['-'],['+']]:#Solo pasa si el elemento mas reciente en la  es ^ o / o * o + o -
                     listaExpresion+=listaPila[len(listaPila)-1:]
                     listaPila=listaPila[:len(listaPila)-1]
                     listaPila+=[elemento]
-                else:
+                else:#Si no  es ^ o / o * o + o -
                     listaPila+=[elemento]
-            elif elemento==')':
+            elif elemento==')':#Si se necesita cerrar un parentesis
                 for rastreador in range(len(listaPila)):
                     if listaPila[rastreador]=='(':
                         parentesisCerrar=rastreador
-                if parentesisCerrar==0:
+                if parentesisCerrar==0:#Si es el ultimo parentesis
                     listaPila=listaPila[1:]
                     for items in range(len(listaPila)-1,-1,-1):
                         listaExpresion+= listaPila[items]
                     listaPila=[]
-                else:
+                else:#Si no es el ultimo parentesis
                     for items in range(len(listaPila[parentesisCerrar+1:])-1,-1,-1):
                         listaExpresion+=listaPila[parentesisCerrar+1:][items]
                     listaPila=listaPila[:parentesisCerrar]
-    for i in range(len(listaPila)-1,-1,-1):#Si quedaron cosas para agregar a la listaExpresion    
+    for i in range(len(listaPila)-1,-1,-1):#Si quedaron cosas para agregar a la listaExpresion diferentes a )   
         if listaPila[i]!=')':
             listaExpresion+= listaPila[i]
     return listaExpresion
     
 
-def evaluacion(listaExpresion):
-    listaNumeros=[]
+def evaluacionListaPosFijo(listaExpresion):#Genera la evalucion de una lista en posfijo
+    listaNumeros=[]#Lista donde se almacena las operaciones
     for items in listaExpresion:
         if type(items)==int:
             listaNumeros+=[items]
@@ -115,7 +114,6 @@ def evaluacion(listaExpresion):
                 listaNumeros+=[num1+num2]
             elif items=='-':
                 listaNumeros+=[num1-num2]
-            print(listaNumeros)
     return listaNumeros[0]
                 
         
@@ -123,24 +121,26 @@ def evaluacion(listaExpresion):
         
             
     
-def principal():
-    ListaArchivos=lecturaArchivo()
+def impresor():#Genera todas las listas para imprimir
+    ListaArchivos=lecturaArchivo()#Genera la lista de archivos
     
-    listaExpresionArch1=listaPostFijo(ListaArchivos[0])
-    evaluacionArch1=evaluacion(listaExpresionArch1)
+    #LLamada a las funciones de posfijo y evaluacion de cada archivo
+    listaExpresionArch1=listasPosFijo(ListaArchivos[0])
+    evaluacionArch1=evaluacionListaPosFijo(listaExpresionArch1)
     
-    listaExpresionArch2=listaPostFijo(ListaArchivos[1])
-    evaluacionArch2=evaluacion(listaExpresionArch2)
+    listaExpresionArch2=listasPosFijo(ListaArchivos[1])
+    evaluacionArch2=evaluacionListaPosFijo(listaExpresionArch2)
     
-    listaExpresionArch3=listaPostFijo(ListaArchivos[2])
-    evaluacionArch3=evaluacion(listaExpresionArch3)
+    listaExpresionArch3=listasPosFijo(ListaArchivos[2])
+    evaluacionArch3=evaluacionListaPosFijo(listaExpresionArch3)
     
-    listaExpresionArch4=listaPostFijo(ListaArchivos[3])
-    evaluacionArch4=evaluacion(listaExpresionArch4)
+    listaExpresionArch4=listasPosFijo(ListaArchivos[3])
+    evaluacionArch4=evaluacionListaPosFijo(listaExpresionArch4)
     
-    listaExpresionArch5=listaPostFijo(ListaArchivos[4])
-    evaluacionArch5=evaluacion(listaExpresionArch5)
+    listaExpresionArch5=listasPosFijo(ListaArchivos[4])
+    evaluacionArch5=evaluacionListaPosFijo(listaExpresionArch5)
     
+    #Imprime todo lo necesario
     print(ListaArchivos[0])
     print(listaExpresionArch1)
     print(evaluacionArch1)
@@ -165,4 +165,5 @@ def principal():
     print(listaExpresionArch5)
     print(evaluacionArch5)
     print()
-principal()
+
+impresor()
