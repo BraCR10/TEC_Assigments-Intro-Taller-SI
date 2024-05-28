@@ -47,6 +47,7 @@ def listasPosFijo(lista):#Convierte una operacion a una lista posfijo
     lista=lista[1:]#Se quita la identificacion de archivo
     listaPila=[]#Donde se ponen los operandos
     listaExpresion=[]#Se arma la lista a retornar
+    bandera=False#Se utiliza para ver la pila en un while true
     for elemento in lista:
         if elemento.isdigit():
             listaExpresion+=[int(elemento)]
@@ -56,26 +57,44 @@ def listasPosFijo(lista):#Convierte una operacion a una lista posfijo
             elif elemento=='(' :
                 listaPila+=[elemento]
             elif elemento=='^' :
-                if listaPila[len(listaPila)-1:] ==['^']:#Solo pasa si el elemento mas reciente es en pila es ^
-                    listaExpresion+=listaPila[len(listaPila)-1:]
-                    listaPila=listaPila[:len(listaPila)-1]
-                    listaPila+=[elemento]
-                else:#Si no es ^
-                    listaPila+=[elemento]
+                while True:
+                    if listaPila[len(listaPila)-1:] ==['^']:#Solo pasa si el elemento mas reciente es en pila es ^
+                        listaExpresion+=listaPila[len(listaPila)-1:]
+                        listaPila=listaPila[:len(listaPila)-1]
+                        bandera=True
+                    elif bandera==False:#Si no es ^
+                        listaPila+=[elemento]
+                        break
+                    elif bandera==True:
+                        listaPila+=[elemento]
+                        break
+                bandera=False
             elif elemento=='*' or elemento=='/':
-                if listaPila[len(listaPila)-1:] in [['^'],['/'],['*']]:#Solo pasa si el elemnto mas reciente en cola es ^ o / o *
-                    listaExpresion+=listaPila[len(listaPila)-1:]
-                    listaPila=listaPila[:len(listaPila)-1]
-                    listaPila+=[elemento]
-                else:#Si  no es ^ o / o *
-                    listaPila+=[elemento]
+                while True:
+                    if listaPila[len(listaPila)-1:] in [['^'],['/'],['*']]:#Solo pasa si el elemnto mas reciente en cola es ^ o / o *
+                        listaExpresion+=listaPila[len(listaPila)-1:]
+                        listaPila=listaPila[:len(listaPila)-1]
+                        bandera=True
+                    elif bandera==False:#Si  no es ^ o / o *
+                        listaPila+=[elemento]
+                        break
+                    elif bandera==True:
+                        listaPila+=[elemento]
+                        break
+                bandera=False
             elif elemento=='+' or elemento=='-':
-                if listaPila[len(listaPila)-1:] in [['^'],['*'],['/'],['-'],['+']]:#Solo pasa si el elemento mas reciente en la  es ^ o / o * o + o -
-                    listaExpresion+=listaPila[len(listaPila)-1:]
-                    listaPila=listaPila[:len(listaPila)-1]
-                    listaPila+=[elemento]
-                else:#Si no  es ^ o / o * o + o -
-                    listaPila+=[elemento]
+                while True:
+                    if listaPila[len(listaPila)-1:] in [['^'],['*'],['/'],['-'],['+']]:#Solo pasa si el elemento mas reciente en la  es ^ o / o * o + o -
+                        listaExpresion+=listaPila[len(listaPila)-1:]
+                        listaPila=listaPila[:len(listaPila)-1]
+                        bandera=True
+                    elif bandera==False:#Si no  es ^ o / o * o + o -
+                        listaPila+=[elemento]
+                        break
+                    elif bandera==True:
+                        listaPila+=[elemento]
+                        break
+                bandera=False
             elif elemento==')':#Si se necesita cerrar un parentesis
                 for rastreador in range(len(listaPila)):
                     if listaPila[rastreador]=='(':
@@ -141,29 +160,29 @@ def impresor():#Genera todas las listas para imprimir
     evaluacionArch5=evaluacionListaPosFijo(listaExpresionArch5)
     
     #Imprime todo lo necesario
-    print(ListaArchivos[0])
-    print(listaExpresionArch1)
-    print(evaluacionArch1)
+    print('Lista original del archivo 1: ',ListaArchivos[0])
+    print('Lista postfijo del archivo 1: ',listaExpresionArch1)
+    print('Resultado del archivo 1: ',evaluacionArch1)
     print()
     
-    print(ListaArchivos[1])
-    print(listaExpresionArch2)
-    print(evaluacionArch2)
+    print('Lista original del archivo 2: ',ListaArchivos[1])
+    print('Lista postfijo del archivo 2: ',listaExpresionArch2)
+    print('Resultado del archivo 2: ',evaluacionArch2)
     print()
     
-    print(ListaArchivos[2])
-    print(listaExpresionArch3)
-    print(evaluacionArch3)
+    print('Lista original del archivo 3: ',ListaArchivos[2])
+    print('Lista postfijo del archivo 3: ',listaExpresionArch3)
+    print('Resultado del archivo 3: ',evaluacionArch3)
     print()
     
-    print(ListaArchivos[3])
-    print(listaExpresionArch4)
-    print(evaluacionArch4)
+    print('Lista original del archivo 4: ',ListaArchivos[3])
+    print('Lista postfijo del archivo 4: ',listaExpresionArch4)
+    print('Resultado del archivo 4: ',evaluacionArch4)
     print()
     
-    print(ListaArchivos[4])
-    print(listaExpresionArch5)
-    print(evaluacionArch5)
+    print('Lista original del archivo 5: ',ListaArchivos[4])
+    print('Lista postfijo del archivo 5: ',listaExpresionArch5)
+    print('Resultado del archivo 5: ',evaluacionArch5)
     print()
 
 impresor()
