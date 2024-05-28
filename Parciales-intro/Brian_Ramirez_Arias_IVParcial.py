@@ -1,8 +1,6 @@
 #IV Parcial
 # Brian Ramirez Arias
 #Carnet 2024109557
-
-
 #Pila
 #n es el numero a calcula el largo
 def largoNum(n):
@@ -15,14 +13,13 @@ def largoNum(n):
             return  1+largoNumAux(abs(n)//10)
     else:
         print('Parametro incorrecto')
-#n es el numero a calcula el largo     
+#n es el numero a calcula el largo
 def largoNumAux(n):
     if n==0:
         return 0
     else:
         #La llamada recursiva
         return 1+largoNumAux(n//10)
-
 
 #Num es el numero para trabajar
 #NumIncluir es el numero a incluir en el patron
@@ -31,17 +28,17 @@ def largoNumAux(n):
 def UNO(num,numIncluir,cant,numBuscar):
     if type(num)==int and type(cant)==int and type(numIncluir)==int and type(numBuscar)==int:
         if abs(cant)==0:
-            return cant0_aux(num,[],False)
+            return cant0_aux(num,[],False),abs(num),numIncluir,abs(cant),abs(numBuscar)
         else:
             if abs(num)==0 and abs(numBuscar)==0:
-                return [patron_aux(abs(cant)*2,abs(cant)*4,numIncluir,abs(numBuscar),[],0,False,False)]
+                return [patron_aux(abs(cant)*2,abs(cant)*4,numIncluir,abs(numBuscar),[],0,False,False)],abs(num),numIncluir,abs(cant),abs(numBuscar)
             elif abs(num)%10==abs(numBuscar):
-                return UNO_aux(abs(num)//10,numIncluir,abs(cant),abs(numBuscar))+[patron_aux(abs(cant)*2,abs(cant)*4,numIncluir,abs(numBuscar),[],0,False,False)]
+                return UNO_aux(abs(num)//10,numIncluir,abs(cant),abs(numBuscar))+[patron_aux(abs(cant)*2,abs(cant)*4,numIncluir,abs(numBuscar),[],0,False,False)],abs(num),numIncluir,abs(cant),abs(numBuscar)
             else:
-                return UNO_aux(abs(num)//10,numIncluir,abs(cant),abs(numBuscar))+[[0,abs(num%10),-1]]
+                return UNO_aux(abs(num)//10,numIncluir,abs(cant),abs(numBuscar))+[[0,abs(num%10),-1]],abs(num),numIncluir,abs(cant),abs(numBuscar)
     else:
         print('Parametro incorrecto')
-        
+
 #NumCopia es una copia para no destruir
 #NumIncluir es el numero a incluir en el patron
 #Cant es la cantidad de veces que se incluira numIncluir
@@ -54,7 +51,7 @@ def UNO_aux(numCopia,numIncluir,cant,numBuscar):#Auxiliar UNO
     elif numCopia%10==numBuscar:
         return  UNO_aux(numCopia//10,numIncluir,cant,numBuscar)+[patron_aux(cant*2,cant*4,numIncluir,numBuscar,[],0,False,False)]
     elif numCopia%10!=numBuscar:
-        return  UNO_aux(numCopia//10,numIncluir,cant,numBuscar)+[[0,numCopia%10,-1]] 
+        return  UNO_aux(numCopia//10,numIncluir,cant,numBuscar)+[[0,numCopia%10,-1]]
 #CantOriginal contine la cantidad dada el usuario multplicada por 2 ya que se duplica entre el num a agregar y el opuesto
 #cant contine la cantidad dada el usuario multplicada por 4, debido a que se ocupa la misma cantidad antes y despues del dig que coincide
 #NumIncluir es el numero a incluir en el patron
@@ -84,7 +81,7 @@ def patron_aux(cantOriginal,cant,numIncluir,numBuscar,lista,bandera,centro,inici
             return lista+[1]+patron_aux(cantOriginal,cant-1,numIncluir,numBuscar,lista,0,centro,inicio)
         else:
             return lista+[-(numBuscar)]+patron_aux(cantOriginal,cant-1,numIncluir,numBuscar,lista,0,centro,inicio)
-def cant0_aux(num,lista,bandera):#Se utiliza en caso de que cant sea 0 
+def cant0_aux(num,lista,bandera):#Se utiliza en caso de que cant sea 0
     if num==0 and bandera==True:#Si ya se ejecuto mas de una vez y num=0
         return []
     else:#Si num!=0
@@ -153,9 +150,9 @@ def DOS1_aux(n,resultado,i):
     if i<1:
         return resultado#Identificador
     else:
-        
-        return DOS1_aux(n,resultado+((((factorial(i)*(n-2))**n)*((n-1)**(n+i)))/(((2*((n*4)**i)+n)*i)**(n*i))), i-1)  
-#Pruebas                            
+
+        return DOS1_aux(n,resultado+((((factorial(i)*(n-2))**n)*((n-1)**(n+i)))/(((2*((n*4)**i)+n)*i)**(n*i))), i-1)
+#Pruebas
 #print(DOS1(1))
 #print(DOS1(26))
 #print(DOS1(2))
@@ -232,7 +229,7 @@ def buscarCentro_aux(num,numerosAQuitar):
         return num%10#Identificador
     else:
         return buscarCentro_aux(num//10,numerosAQuitar-1)
-#Cola   
+#Cola
 #num1 es el primer numero para trabajar
 #num2 es el segunda numero para trabajar
 #num3 es el tercer numero para trabajar
@@ -244,12 +241,12 @@ def TRES(num1,num2,num3):
             #1 cuando interactua con el centro de num 3 y los extremos de num1
             #2 cuando interactua con el centro de num 1, extremos izq de num2 y centro num2
             #3 cuando interactua con el centro de num 5, extremos der de num2 y centro num2
-            return TRES_aux(abs(num1),abs(num2),abs(num3),buscarCentro(abs(num1)),buscarCentro(abs(num2)),buscarCentro(abs(num3)),[],largoNum(abs(num1))*2-2,1,0,1,1,1)
+            return TRES_aux(abs(num1),abs(num2),abs(num3),buscarCentro(abs(num1)),buscarCentro(abs(num2)),buscarCentro(abs(num3)),[],largoNum(abs(num1))*2-2,1,0,1,1,1),abs(num1),abs(num2),abs(num3)
         else:
           return('Parametros incorrectos')
     else:
         return('Parametros incorrectos')
-        
+
 #num1 es el primer numero para trabajar
 #num2 es el segunda numero para trabajar
 #num3 es el tercer numero para trabajar
@@ -344,8 +341,7 @@ def TRES_aux(num1,num2,num3,centroNum1,centroNum2,centroNum3,lista,finalizacion,
         temp3=mayor-menor
         return TRES_aux(num1,num2,num3,centroNum1,centroNum2,centroNum3,lista+[[centroNum3**2,temp1**3,temp2**2,temp3**3]],finalizacion,inicio+1,0,contNum1Num3,ceros,contNum2+1)
 
-
-#print(TRES(312359061,890121635,435762340)))
+#print(TRES(312359061,890121635,435762340))
 #print(TRES(122,-421,155))
 #print(TRES(3123590,8901216,4357623))
 #print(TRES(31235,89012,43576))
@@ -356,7 +352,7 @@ def TRES_aux(num1,num2,num3,centroNum1,centroNum2,centroNum3,lista,finalizacion,
 #print(TRES(000,000,000))
 #print(TRES(10130,20507,43805)))
 #print(TRES(110,210,443))
-#print(TRES(-7030215,-5019702,-3031550)))
+#print(TRES(-7030215,-5019702,-3031550))
 #print(176%1000//(10**(3-1))))
 #print(TRES(123,456,789))
 #print(TRES(12307,45076,78679))
@@ -370,13 +366,13 @@ def CUATRO(lista,elemento):
         return CUATRO_aux(lista, elemento)
     else:
         return('Parametro incorrecto')
-    
+
 #lista la lista que se da el usuario
 #elemento el elemento a buscar
 def CUATRO_aux(lista, elemento):#Auxiliar de cola
     if isinstance(lista, int):
         if lista == elemento:#Se el elemento de las lista es el elemento buscado
-            return [1,0,elemento+1,elemento,elemento,elemento-1,0,1]  
+            return [1,0,elemento+1,elemento,elemento,elemento-1,0,1]
         else:#Si no es el elemento
             return lista
     elif isinstance(lista, list):
@@ -392,9 +388,8 @@ def sublistasCUATRO_aux(lista, elemento, i):#Verifica si hay mas listas adentro 
         return lista
     lista[i] = CUATRO_aux(lista[i], elemento)
     return sublistasCUATRO_aux(lista, elemento, i + 1)
-        
 
-#Pruebas    
+#Pruebas
 #print(CUATRO([[[[2,[[[[[[[[[2]]]],3]]]]]],2]]],2))
 #print(CUATRO([-2,[-2,3,[-2],5,9],-2],-2))
 #print(CUATRO( [1,[2,9,],[[4,2,6],[8]],2,10],2))
