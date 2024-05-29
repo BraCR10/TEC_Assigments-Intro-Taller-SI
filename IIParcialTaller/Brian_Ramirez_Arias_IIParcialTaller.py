@@ -128,7 +128,10 @@ def evaluacionListaPosFijo(listaExpresion):#Genera la evalucion de una lista en 
             elif items=='*':
                 listaNumeros+=[num1*num2]
             elif items=='/':
-                listaNumeros+=[num1/num2]
+                if num2!=0:
+                    listaNumeros+=[num1/num2]
+                else:
+                    return 'Error por divicion entre 0'
             elif items=='+':
                 listaNumeros+=[num1+num2]
             elif items=='-':
