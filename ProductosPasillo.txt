@@ -1,0 +1,6 @@
+Los productos registrados: 
+
+###############################################################
+Codigo pasillo: 1
+Codigo producto: 2
+Nombre: K
