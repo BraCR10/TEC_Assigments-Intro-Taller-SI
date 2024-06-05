@@ -1,9 +1,0 @@
-Las marcas registrados: 
-
-###############################################################
-Codigo pasillo: 1
-Codigo producto: 2
-Codigo marca: 3
-Nombre: K
-Cantidad Gondola: H
-Precio: 11111.0
